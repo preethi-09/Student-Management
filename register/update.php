@@ -1,8 +1,9 @@
 <?php
+
 session_start();
 include"db.php";
-if(isset($_GET['id'])){
-        
+if(isset($_GET['id']))
+        {
             $query ="select * from students where id='".$_GET['id']."'";
             $run = mysqli_query($conn,$query);
         }
@@ -11,46 +12,61 @@ if(isset($_GET['id'])){
     if(isset($_POST['submit']))
     {
      
-        $fname =$_POST['fname'];
+        $firstname =$_POST['fname'];
         $lname =$_POST['lname'];
         $dob =$_POST['dob'];
         $course =$_POST['course'];
         $gender =$_POST['gender'];
         $email =$_POST['email'];
       
-       $target_path = "profile/"; 
-       $photoName = $_FILES['photo']['name'];
-       print_r($photoName);
-
-       $target_path = $target_path.basename($_FILES['photo']['name']);
-       if(isset($photoName))
-       {
-        move_uploaded_file($_FILES['photo']['tmp_name'], $target_path);
-       }
-
-
        
-     if(!empty($_POST['fname']) && !empty($_POST['lname']) && !empty($_POST['dob']) && !empty($_POST['course']) && !empty($_POST['gender']) && !empty($_POST['email'])){
+       $fname = $_FILES['photo']['name'];
+      
+      
+       if($_FILES['photo']['size'] == 0)
+       {
 
-        $query = "UPDATE students set fname='$fname',lname='$lname',dob='$dob',course='$course',gender='$gender',email='$email',photo='$photoName' where id='".$_GET['id']."'";
-        $run1 = mysqli_query($conn,$query) or die(mysqli_error());
+        $query = "UPDATE students set fname='$firstname',lname='$lname',dob='$dob',course='$course',gender='$gender',email='$email' where id='".$_GET['id']."'";
+        $result=mysqli_query($conn ,$query);
 
 
-        if($run1){
+        if($result)
+        {
+            header('location:http://localhost/crud-project/index.php');
+        }
+        else{
+            echo mysqli_error($conn);
+        }
+
+       }
+       else {
+     
+        $target_path = "profile/"; 
+        $photoName = $_FILES['photo']['name'];
+        $target_path = $target_path.basename($_FILES['photo']['name']);
+
+        if(isset($photoName))
+        {
+        move_uploaded_file($_FILES['photo']['tmp_name'],$target_path);
+        }
+       
+
+
+        $query = "UPDATE students set fname='$firstname',lname='$lname',dob='$dob',course='$course',gender='$gender',email='$email',photo='$photoName ' where id='".$_GET['id']."'";
+        $result=mysqli_query($conn ,$query); 
+
+        if($result){
 
                  header('location:http://localhost/crud-project/index.php');
            
         }
-        else{
-            echo"unable to save records";
+        else
+        {
+            echo mysqli_error($conn); 
         }
 
-        }
-        else{
-   
-            }
-        
-             }
+       }    
+}
 
 ?>
 
@@ -141,7 +157,7 @@ if(isset($_GET['id'])){
 
                     <div class="form-wrapper">
                             <label for="">Profile</label>
-                            <input type="file" name="photo" class="form-control" value="<?php echo $profile;?>" required >
+                            <input type="file" name="photo" class="form-control">
                             <br>
                             <img width="100px" height="100px" src="profile/<?php echo $profile;?> "> 
                         </div>
@@ -163,6 +179,7 @@ if(isset($_GET['id'])){
         <script src="vendor/date-picker/js/datepicker.en.js"></script>
 
         <script src="js/main.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         
     </body>
 </html>
