@@ -1,9 +1,15 @@
 <?php
+session_start();
+
+if(!$_SESSION['login']){
+   header("location:login.php");
+   die;
+}
+
 include 'db.php' ;
 $sql="SELECT * FROM students";
 $result=$conn->query($sql);
 $result = mysqli_query($conn,"SELECT *FROM students");
-session_start();
 
 if (isset($_GET['id'])) 
 {
@@ -105,7 +111,7 @@ if (isset($_GET['id']))
                                 });
                                  });
                             });
-</script>
+                    </script>
 
                    
                     

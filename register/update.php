@@ -1,6 +1,10 @@
 <?php
-
 session_start();
+if(!$_SESSION['login']){
+   header('Location: /Student-Management/login.php');
+   die;
+}
+
 include"db.php";
 if(isset($_GET['id']))
         {

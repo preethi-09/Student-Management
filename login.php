@@ -1,3 +1,9 @@
+<?php 
+
+session_start();
+$_SESSION['login'] = true;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +25,6 @@
 <body>
     <?php
     include 'db.php';
-    session_start();
     $error="";
         $usernameErr = $passwordErr = "";
         $username = $password = "";
@@ -48,8 +53,10 @@
         if(count($_POST)>0) {
        
         $result = mysqli_query($conn,"SELECT * FROM users WHERE username='" . $_POST["username"] . "' and password = '". $_POST["password"]."'");
-        $row  = mysqli_fetch_array($result);
 
+        $row  = mysqli_fetch_array($result);
+        $_SESSION['login'] = true;
+        
         if(is_array($row)) {
         $_SESSION["id"] = $row['id'];
         $_SESSION["username"] = $row['username'];

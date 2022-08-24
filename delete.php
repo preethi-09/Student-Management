@@ -1,6 +1,10 @@
-
-
 <?php
+session_start();
+if(!$_SESSION['login']){
+   header("location:login.php");
+   die;
+}
+
 include 'db.php';
 $result = mysqli_query($conn,"SELECT * FROM students");
 
