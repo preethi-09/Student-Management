@@ -11,7 +11,7 @@ if (isset($_GET['id']))
      $result = $conn->query($sql);
      if ($result == TRUE) 
      {
-        header('location:http://localhost/crud-project/index.php') ;
+        header('location:http://localhost/Student-Management/index.php') ;
 }
     else
 
