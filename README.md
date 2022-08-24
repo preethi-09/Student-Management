@@ -1,4 +1,4 @@
-#Crud-Project
+#Student-loginform
 Project name is student login and signup form using crud operations.
 students can login using their username and password. If student does not have an account,he can signup and then login.
 A student can add , view , update and delete his details in the view page.
