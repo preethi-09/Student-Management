@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+//print_r($_SESSION['login']);exit;
 if(!$_SESSION['login']){
    header("location:login.php");
    die;

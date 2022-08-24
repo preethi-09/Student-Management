@@ -1,7 +1,7 @@
 <?php 
 
 session_start();
-$_SESSION['login'] = true;
+
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +56,7 @@ $_SESSION['login'] = true;
 
         $row  = mysqli_fetch_array($result);
         $_SESSION['login'] = true;
-        
+
         if(is_array($row)) {
         $_SESSION["id"] = $row['id'];
         $_SESSION["username"] = $row['username'];
