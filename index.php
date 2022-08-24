@@ -75,8 +75,8 @@ if (isset($_GET['id']))
                     <td><?php echo $row['email']; ?></td>
                      <td><img width="100px" height="100px" src="register/profile/<?php echo $row['photo'];?> "></td>
                      
-                    <td><a href="http://localhost/crud-project/view.php?id=<?php echo$row["id"];?>" class="btn btn-primary">View</a></td>
-                    <td><a href="http://localhost/crud-project/register/update.php?id=<?php echo$row["id"];?>" class="btn btn-success">Edit</a></td>
+                    <td><a href="http://localhost/Student-Management/view.php?id=<?php echo$row["id"];?>" class="btn btn-primary">View</a></td>
+                    <td><a href="http://localhost/Student-Management/register/update.php?id=<?php echo$row["id"];?>" class="btn btn-success">Edit</a></td>
                    <td><input type="button" name="delete" value="Delete" class=" delete btn btn-primary"></td>
 
                     <script type="text/javascript">
@@ -93,7 +93,7 @@ if (isset($_GET['id']))
 
                                         var id = $(this).parents("tr").attr("id");
 
-                                        window.location.href="http://localhost/crud-project/delete.php?id="+id+"";
+                                        window.location.href="http://localhost/Student-Management/delete.php?id="+id+"";
                                         swal("Your record is deleted!", {
                                             icon: "success",
                                         });
