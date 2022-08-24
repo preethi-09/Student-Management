@@ -32,7 +32,7 @@ if(isset($_GET['id']))
 
         if($result)
         {
-            header('location:http://localhost/crud-project/index.php');
+            header('location:http://localhost/Student-Management/index.php');
         }
         else{
             echo mysqli_error($conn);
@@ -57,7 +57,7 @@ if(isset($_GET['id']))
 
         if($result){
 
-                 header('location:http://localhost/crud-project/index.php');
+                 header('location:http://localhost/Student-Management/index.php');
            
         }
         else
