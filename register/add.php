@@ -28,7 +28,7 @@ if(isset($_POST['submit'])){
 
         if($run){
 
-        		 header('location:http://localhost/crud-project/index.php');
+        		 header('location:http://localhost/Student-Management/index.php');
            
         }
         else{
