@@ -85,7 +85,7 @@ function test($form)
     <title>Sign Up</title>
 
     <!-- Font Icon -->
-    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="js/fonts/material-icon/css/material-design-iconic-font.min.css">
     <link href="images/logo.png" rel="icon">
 
     <!-- Main css -->
