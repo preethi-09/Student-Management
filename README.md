@@ -4,5 +4,6 @@ students can login using their username and password. If student does not have a
 A student can add , view , update and delete his details in the view page.
 Database name is college 
 Import the database
-Open http://localhost/crud-project/login.php to view it in your browser.
-![image](https://user-images.githubusercontent.com/111574948/186152793-9b3916ef-565b-4784-a345-8d4ee77f4df9.png)
+Open http://localhost/Student-Management/login.php to view it in your browser.
+![image](https://user-images.githubusercontent.com/111574948/186841812-cb2044d5-bf39-4d85-a070-add492daabe5.png)
+
