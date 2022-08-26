@@ -30,6 +30,20 @@ if (isset($_GET['id']))
 <!DOCTYPE html>
 <html>
 <head>
+
+     <style>
+      table {
+        border-collapse: collapse;
+        table-layout: fixed;
+        width: 410px;
+      }
+      table td {
+        border: solid 1px #666;
+        width: 110px;
+        word-wrap: break-word;
+      }
+    </style>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Students Details</title>
@@ -48,7 +62,22 @@ if (isset($_GET['id']))
 </head>
 <body>
   <div class="container">
-        <h1 style="text-align:center; font-family:'times new roman';color:red">STUDENTS DETAILS</h1>
+        <h1 style="text-align:center; font-family:'Georgia';color:Tomato;"><b>STUDENTS DETAILS</b></h1>
+
+        <?php
+            if(isset($_SESSION['status']))
+            {
+                ?>
+                <div class="alert alert-success" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <strong>Success!</strong><?php echo $_SESSION['status'];?>
+                    </div>
+                <?php
+                unset($_SESSION['status']);
+            }
+        ?>
+
+         
          <p class='text-right'><a href='logout.php' class='btn btn-danger'>Logout</a></p>
          <a href='register/add.php' class='btn btn-success'>Add</a>
          <br><br>
@@ -57,10 +86,8 @@ if (isset($_GET['id']))
             <tr>
                 <th>STUDENT ID</th>
                 <th>FIRST NAME</th>
-                <th>LAST NAME</th>
                 <th>DOB</th>
                 <th>COURSE</th>
-                <th>GENDER</th>
                 <th>EMAIL</th>
                 <th>PROFILE</th>
                 <th>VIEW</th>
@@ -74,10 +101,8 @@ if (isset($_GET['id']))
                 <tr id="<?php echo $row['id']?>">
                     <td><?php echo $row['id']; ?></td>
                     <td><?php echo $row['fname']; ?></td>
-                    <td><?php echo $row['lname']; ?></td>
                     <td><?php echo $row['dob']; ?></td>
                     <td><?php echo $row['course']; ?></td>               
-                    <td><?php echo $row['gender']; ?></td>
                     <td><?php echo $row['email']; ?></td>
                      <td><img width="100px" height="100px" src="register/profile/<?php echo $row['photo'];?> "></td>
                      
@@ -100,9 +125,7 @@ if (isset($_GET['id']))
                                         var id = $(this).parents("tr").attr("id");
 
                                         window.location.href="http://localhost/Student-Management/delete.php?id="+id+"";
-                                        swal("Your record is deleted!", {
-                                            icon: "success",
-                                        });
+                                       
                                     } else {
                                         swal("Your record is safe!", {
                                             icon: "success",
@@ -111,6 +134,13 @@ if (isset($_GET['id']))
                                 });
                                  });
                             });
+                    </script>
+                    <script type="text/javascript">
+                    window.setTimeout(function() {
+                    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                        $(this).remove(); 
+                    });
+                }, 3000);
                     </script>
 
                    

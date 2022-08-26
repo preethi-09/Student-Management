@@ -4,8 +4,8 @@ if(!$_SESSION['login']){
    header('Location: /Student-Management/login.php');
    die;
 }
-
 include"db.php";
+
 if(isset($_POST['submit'])){
     
 
@@ -32,7 +32,7 @@ if(isset($_POST['submit'])){
 
 
         if($run){
-
+        		 $_SESSION['status']="Your details have been inserted!";
         		 header('location:http://localhost/Student-Management/index.php');
            
         }
@@ -74,6 +74,7 @@ if(isset($_POST['submit'])){
 		<div class="wrapper">
 			<div class="inner">
 				<form action="" method="POST" enctype="multipart/form-data">
+
 					<h3>Add Student</h3>
 					<div class="form-row">
 						<div class="form-wrapper">
@@ -120,14 +121,22 @@ if(isset($_POST['submit'])){
 					</div>
 						<div class="form-wrapper">
 							<label for="">Profile</label>
-							<input type="file" name="photo" class="form-control" placeholder="" required>
+							<input type="file" name="photo" class="form-control" placeholder="" required><br>
 						</div>
-					<center>
-					<button name="submit" type="submit" class="in" data-text="Save">
-						<span>Save</span>
-					</button>
-					</center>
-				</form>
+					
+						<div class="form-row">
+                        <span style="margin-left: 10em;">
+                        <button name="submit" type="submit">Add</button></span>
+                         
+                     <span style="margin-left: 0.5em;">
+                    
+                      <button onclick="history.go(-1);" class="cancel">Cancel</button>  
+                    	
+                     </span>
+                 </div>
+
+				
+				</form> 
 			</div>
 		</div>
 		

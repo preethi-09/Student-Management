@@ -15,6 +15,7 @@ if (isset($_GET['id']))
      $result = $conn->query($sql);
      if ($result == TRUE) 
      {
+        $_SESSION['status']="Your details have been deleted!";
         header('location:http://localhost/Student-Management/index.php') ;
 }
     else

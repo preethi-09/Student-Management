@@ -6,6 +6,12 @@ if(!$_SESSION['login']){
 }
 
 include"db.php";
+if (isset($_POST['cancel']) && $_POST['cancel'] == 'cancel') {
+
+    header('location:http://localhost/Student-Management/index.php');
+    
+}
+
 if(isset($_GET['id']))
         {
             $query ="select * from students where id='".$_GET['id']."'";
@@ -36,6 +42,7 @@ if(isset($_GET['id']))
 
         if($result)
         {
+            $_SESSION['status']="Your details have been updated!";
             header('location:http://localhost/Student-Management/index.php');
         }
         else{
@@ -60,7 +67,7 @@ if(isset($_GET['id']))
         $result=mysqli_query($conn ,$query); 
 
         if($result){
-
+                 $_SESSION['status']="Your details have been updated!";
                  header('location:http://localhost/Student-Management/index.php');
            
         }
@@ -93,6 +100,7 @@ if(isset($_GET['id']))
         
         <!-- STYLE CSS -->
         <link rel="stylesheet" href="css/style.css">
+        
     </head>
 
     <body>
@@ -100,7 +108,9 @@ if(isset($_GET['id']))
         <div class="wrapper">
             <div class="inner">
                 <form action="" method="POST" enctype="multipart/form-data">
+                    
                     <h3>Edit Student</h3>
+
                     <?php
                      while ($row = $run-> fetch_assoc())
                     { 
@@ -160,18 +170,19 @@ if(isset($_GET['id']))
                     </div>
 
                     <div class="form-wrapper">
-                            <label for="">Profile</label>
-                            <input type="file" name="photo" class="form-control">
-                            <br>
-                            <img width="100px" height="100px" src="profile/<?php echo $profile;?> "> 
-                        </div>
-                          
+                        <label for="">Profile</label>
+                        <input type="file" name="photo" class="form-control"> <br>
+                        <img width="80px" height="80px" src="profile/<?php echo $profile;?> ">
+                        </div> 
 
-                    <center>
-                    <button name="submit" type="submit" class="update" data-text="Update">
-                        <span>Update</span>
-                    </button>
-                    </center>
+                    <div class="form-row">
+                        <span style="margin-left: 10em;">
+                        <button name="submit" type="submit">Update</button></span>
+                         
+                     <span style="margin-left: 0.5em;">
+                     <button name="cancel" type="submit" class="cancel" value="cancel"> Cancel</button> </span>
+                 </div>
+                    
                 </form>
             </div>
         </div>
@@ -183,7 +194,7 @@ if(isset($_GET['id']))
         <script src="vendor/date-picker/js/datepicker.en.js"></script>
 
         <script src="js/main.js"></script>
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        
         
     </body>
 </html>
