@@ -111,7 +111,7 @@ function test($form)
                                 <span class="error">*<?php echo $passwordErr; ?></span>
                             </div>
                             <div class="form-group">
-                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label><br>
+                                <label for="re-pass"><i class="zmdi zmdi-lock"></i></label><br>
                                 <input type="password" name="confirm" id="confirm" placeholder="Repeat your password"/>
                                 <span class="error">*<?php  echo $confirmErr; ?></span>
                             </div>
